@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n, choice, notes;
+    cout<<"enter the total amount in Rs."<< endl;
+    cin>> n;
+    cout<<"enter the value of notes at which you are starting "<< endl;;
+    cin>> choice ;;
+    switch (choice)
+    {
+    case 50:
+        notes = n / 50;
+        cout << "no. of 50 ruoees notes =  "<< notes<<  endl;;
+        n = n % 50;
+
+    case 20:
+        notes = n / 20;
+        cout<< "no. of 20 rupees notes = "<< notes<< endl;
+        n = n % 20;
+
+    case 10:
+        notes = n / 10;
+        cout<<"no. of 10 rupees notes = "<< notes<<endl;;
+        n = n % 10;
+
+    
+
+    default:
+        printf("print only valid values only .");
+        break;
+    }
+   
+}
