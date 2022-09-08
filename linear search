@@ -17,7 +17,7 @@ int main()
     cout << "enter the element to be found :" << endl;
     int element;
     cin >> element;
-    bool found = search(arr, 5, 78);
+    bool found = search(arr, 5, element);
     if (found)
     {
         cout << " element is present " << endl;
