@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#define max 1000
+using namespace std;
+int find(int *T, int size, int x)
+{
+   int temp = 0, i, index =0;
+   for (i = 0; i <=size-1; i++)
+   {
+       if (T[i] == x)
+       {
+           temp = T[i];
+           index = i;
+       }
+   }
+   if (index)
+       return index;
+   else       
+       return -1;
+}
+int main()
+{
+   int array[max];
+   int x = 0, size=0;
+   cin >> size;
+   for (int i = 0; i <= size-1; i++)
+   {
+       cin >> array[i];
+   }
+   cin >> x;
+   cout <<find(array, size, x);
+   return 0;
+}
