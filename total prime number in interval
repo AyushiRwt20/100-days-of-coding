@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+
+using namespace std;
+
+//Write your totalPrime function here
+int totalPrime(int start,int end){
+   int cnt=0;
+   for(int i=start;i<=end;i++){
+       for(int j=2;j<i;j++){
+           if(i%j==0){
+               cnt++;
+               break;
+           }
+       }
+   }
+   return (end-start)-cnt+1;
+}
+
+int main() {
+   int S, E;
+   cin >> S >> E;
+   cout << totalPrime(S, E);
+   return 0;
+}
