@@ -1,0 +1,32 @@
+1. FIBONNACI SERIES 
+class Solution {
+public:
+    int fib(int n) {
+        if(n==0)
+            return 0;
+        
+        if (n==1)
+            return 1;
+        
+        int finalans= fib(n-1)+ fib(n-2);
+       return finalans;  
+    }
+     
+};
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. CLIMBING STAIRS 
+class Solution {
+public:
+    int climbstairs(int n) {
+        if(n==0)
+            return 0;
+        
+        if (n==1)
+            return 1;
+        
+        int climb= climbstairs(n-1)+ climbstairs(n-2);
+       return climb ;  
+    }
+     
+};
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
