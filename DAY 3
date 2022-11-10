@@ -1,0 +1,68 @@
+1. EXAMINATION OF SORTED ARRAY 
+# include<iostream>
+using namespace std ;
+bool issort(int arr[],int size){
+    if ((size==0)|| (size==1))
+        return true ;
+        if(arr[0]>arr[1])
+            return false ;
+            bool ans = issort(arr+1,size-1);
+            return ans;
+       }       
+       int main (){
+        int arr1[5]={1,2,3,4,5};
+        int arr2[5]={4,6,3,8,1};
+        cout << "array 1 : " << issort(arr1,5) << endl;
+        cout << "array 2 : " << issort(arr2,5) << endl;
+       } 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+       2. SUM OF ELEMENTS OF ARRAY 
+       # include<iostream>
+using namespace std ;
+
+int getsum(int *arr,int size){
+    if(size==0)
+        return 0;
+    if(size==1)
+        return arr[0];
+        int  remsum =getsum(arr+1,size-1);
+        int sum = arr[0] +remsum ;
+        return sum ; 
+       }       
+       int main (){
+        int arr1[5]={1,2,3,4,5};
+        int n=5;
+        cout << " sum of elemnts of array  : " << getsum(arr1,n) << endl;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 3. LINEAR SEARCH
+ # include<iostream>
+using namespace std ;
+bool found(int arr[],int size,int key){
+    if (size==0){
+        return 0;
+    }
+    if (arr[0]== key)
+        return 1;
+    bool ans = found(arr+1,size-1,key);
+    return ans ;
+}
+
+
+       int main (){
+        int arr1[5]={1,2,3,4,5};
+        int n=5;
+        int key = 99;
+        bool result = found(arr1,n,key);
+        cout << " element is  " ;
+        if (result){
+            cout << "present " << endl ;
+        }
+        else{
+            cout << "absent " << endl ;
+        }
+        
+       } 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
