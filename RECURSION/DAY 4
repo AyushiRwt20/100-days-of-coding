@@ -1,0 +1,56 @@
+1. REVERSE OF A STRING 
+#include<iostream>
+using namespace std;
+
+void reverse(string& str, int i, int j ) {
+
+    if(i>j)
+        return ;
+
+    swap(str[i], str[j]);
+    i++;
+    j--;
+
+    reverse(str,i,j);
+
+}
+
+int main() {
+
+    string STR = "abcde";
+    reverse(STR, 0 , name.length()-1 );
+    cout << STR << endl;
+
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. CHECK FOR PALLINDROME 
+#include<iostream>
+using namespace std ;
+
+bool pall(string str, int i, int j ) {
+ if(i>j)
+     return 1;
+  if(str[i]!=str[j]){
+    return 0;
+  }   
+  
+  else{
+    return pall(str,i+1,j-1);
+  }
+}
+
+int main() {
+
+    string stre = "dada";
+ bool ispall= pall( stre, 0, stre.length()-1 );
+ if(ispall){
+    cout<< "yes "<< endl;
+}
+ else{
+    cout<< "no" << endl;
+ }
+     return 0;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
