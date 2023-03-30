@@ -1,0 +1,50 @@
+class Solution {
+public:
+void lefti(Node *root,vector<int>&ans){
+    if((root==NULL)|| (root->left== NULL && root->right==NULL))
+    return;
+    ans.push_back(root->data);
+    if(root->left){
+        lefti(root->left,ans);
+    }
+    else{
+        lefti(root->right,ans);
+    }
+}
+void leaf(Node *root,vector<int>&ans){
+    if((root==NULL)) 
+    return;
+    if (root->left== NULL && root->right==NULL){
+        ans.push_back(root->data);
+        return;
+    }
+   
+        leaf(root->left,ans);
+    
+    
+        leaf(root->right,ans);
+    
+}
+void righti(Node *root,vector<int>&ans){
+    if((root==NULL)|| (root->left== NULL && root->right==NULL))
+    return;
+    if(root->right){
+        righti(root->right,ans);
+    }
+    else{
+        righti(root->left,ans);
+    }
+    ans.push_back(root->data);
+}
+    vector <int> boundary(Node *root)
+    {
+        vector<int>ans;
+        if(root==NULL){ return ans;}
+        ans.push_back(root->data);
+        lefti(root->left,ans);
+        leaf(root->left,ans);
+        leaf(root->right,ans);
+        righti(root->right,ans);
+        return ans;
+    }
+};
