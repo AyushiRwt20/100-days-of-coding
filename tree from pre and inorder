@@ -1,0 +1,29 @@
+class Solution{
+    public:
+    int findpos(int in[],int ele,int size){
+        for(int i= 0;i<=size;i++){
+            if(in[i]==ele){
+                in[i]=INT_MIN;
+                return i;
+            }
+        }return -1;
+    }
+        
+    
+    Node*solve(int in[],int pre[],int &index,int instrt,int inend, int size){
+        if(index>=size|| instrt>inend){
+            return NULL;
+        }
+        int ele=pre[index++];
+        Node*root=new Node(ele);
+        int pos=findpos(in,ele,size);
+        root->left=solve(in,pre,index,instrt,pos-1,size);
+         root->right=solve(in,pre,index,pos+1,inend,size);
+         return root;
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {int preindex=0;
+        Node*ans=solve(in,pre,preindex,0,n-1,n);
+        return ans;
+    }
+};
