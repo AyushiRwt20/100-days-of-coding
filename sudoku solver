@@ -1,0 +1,136 @@
+#include <bits/stdc++.h> 
+bool issafe(int row,int col,vector<vector<int>>&board,int val){
+    for(int i=0;i<board.size();i++){
+        if((board[row][i]==val) ){
+            return false;
+        }
+        if((board[i][col]==val)){
+            return false;
+        }
+        if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == val) {
+          return false;
+        }
+    }
+    return true;
+}
+
+bool solve(vector<vector<int>>& board){
+    int n= board[0].size();
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(board[i][j]==0){
+                for(int val=1;val<=9;val++){
+                    if(issafe(i,j,board,val)){
+                        board[i][j]=val;
+                        bool nxtsoln= solve(board);
+
+                        if (nxtsoln) {
+                          return true;
+                        }
+                        else{
+                            board[i][j]=0;//backtrack
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+    } return true;
+}
+
+void solveSudoku(vector<vector<int>>& sudoku)
+{
+    solve(sudoku);
+}
+/*bool isSafe(int row, int col, vector<vector<int>>& board, int k, int n){
+
+for(int i=0;i<n;i++){
+
+if(board[row][i] == k)
+
+return false;
+
+if(board[i][col] == k)
+
+return false;
+
+if(board[3*(row/3) + i/3][3*(col/3) + i%3] == k)
+
+return false;
+
+}
+
+return true;
+
+}
+
+ 
+
+bool solve(vector<vector<int>>& board){
+
+int n = board[0].size();
+
+ 
+
+for(int i=0;i<n;i++){
+
+for(int j=0;j<n;j++){
+
+//empty
+
+if(board[i][j] == 0){
+
+for(int k = 1; k <=n; k++){
+
+if(isSafe(i, j, board, k, n)){
+
+board[i][j] = k;
+
+bool possolution = solve(board);
+
+if(possolution){
+
+return true;
+
+}
+
+else{
+
+//backtrack
+
+board[i][j] = 0;
+
+}
+
+}
+
+}
+
+return false;
+
+}
+
+}
+
+}
+
+return true;
+
+}
+
+ 
+
+void solveSudoku(vector<vector<int>>& sudoku)
+
+{
+
+// Write your code here
+
+// No need to print the final sudoku
+
+// Just fill the values in the given matrix
+
+solve(sudoku);
+
+}*/
+
