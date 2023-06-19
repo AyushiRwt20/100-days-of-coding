@@ -1,0 +1,34 @@
+class Solution {
+public:
+bool check(vector<int>base,vector<int>neww){
+    if(neww[0]<=base[0] && neww[1]<=base[1] && neww[2]<=base[2]){ return true;}
+    else{
+        return false;
+    }
+}
+
+int solve(int n ,vector<vector<int>>&a){
+    vector<int>curri(n+1,0);
+    vector<int>previ(n+1,0);
+    for (int curr =n-1;curr>=0;curr--){
+        for(int prev=curr-1;prev>=-1;prev--){
+            int incl=0;
+            if(prev==-1|| check(a[curr],a[prev])){
+                incl=a[curr][2]+previ[curr+1];
+            }
+            int excl=0+previ[prev+1];
+            curri[prev+1]=max(incl,excl);
+        }
+        previ=curri;
+    }
+    return previ[0];
+}
+
+    int maxHeight(vector<vector<int>>& cuboids) {
+        for(auto &i :cuboids){
+            sort(i.begin(),i.end());
+        }
+        sort(cuboids.begin(),cuboids.end());
+        return solve(cuboids.size(),cuboids);
+    }
+};
