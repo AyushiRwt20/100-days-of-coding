@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+int solve(int i ,int op,int k,vector<int> &prices,vector<vector<int>>&dp){
+    if(i==prices.size()) return 0;
+    if(op>=2*k) return 0;
+    if(dp[i][op]!=-1) return dp[i][op];
+    int profit=0;
+    if(op%2==0){
+        int incl= -prices[i]+solve(i+1,op+1,k,prices,dp);
+        int excl= 0+solve(i+1,op,k,prices,dp);
+        profit=max(incl,excl);
+    }
+    if(op%2!=0){
+        int incl= prices[i]+solve(i+1,op+1,k,prices,dp);
+        int excl= 0+solve(i+1,op,k,prices,dp);
+        profit=max(incl,excl);
+    }
+    return dp[i][op]=profit;
+} 
+int maximumProfit(vector<int> &prices, int n, int k)
+{
+    vector<vector<int>>dp(n,vector<int>(2*k,-1));
+    return solve(0,0,k,prices,dp);
+}
